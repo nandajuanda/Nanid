@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anniversary Nanda & Nida 1 Tahun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Dancing+Script&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #B3E5FC 0%, #E1F5FE 100%);
+      color: #1A237E;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      background: #f5faff;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 100%;
+      padding: 30px 25px;
+      box-shadow: 0 8px 20px rgba(26, 35, 126, 0.2);
+      text-align: center;
+    }
+    h2 {
+      font-family: 'Dancing Script', cursive;
+      color: #0D47A1;
+      font-size: 2.8em;
+      margin-bottom: 0.1em;
+    }
+    p {
+      font-size: 1.15em;
+      margin: 0.8em 0 1.6em 0;
+      color: #0D47A1;
+      line-height: 1.6em;
+      text-align: justify;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input[type="date"] {
+      padding: 10px 15px;
+      font-size: 1em;
+      border-radius: 10px;
+      border: 2px solid #64B5F6;
+      width: 60%;
+      max-width: 250px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      margin-bottom: 20px;
+    }
+    input[type="date"]:focus {
+      border-color: #1E88E5;
+    }
+    button {
+      background: #42A5F5;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin: 10px 5px 0 5px;
+    }
+    button:hover {
+      background: #1976D2;
+    }
+    .hidden {
+      display: none;
+    }
+    .slide {
+      animation: fadeIn 0.8s ease;
+    }
+    .slide img.main-img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 6px 15px rgba(25, 118, 210, 0.3);
+    }
+    .photos-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .photos-row img {
+      width: 22%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(33, 150, 243, 0.25);
+      object-fit: cover;
+      height: 100px;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    #musicControls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Musik -->
+<audio id="bgMusic" loop>
+  <source src="LAGU YANG COCOK UNTUK ANNIVERSARY.mp3" type="audio/mp3" />
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<!-- Tombol kontrol musik -->
+<div id="musicControls" class="hidden">
+  <button onclick="toggleMusic()" id="musicBtn">🔊 Play Musik</button>
+</div>
+
+<div class="container" id="loginContainer">
+  <h2>Anniversary Nanda & Nida ke 1 tahun</h2>
+  <p>04 Juni 2024</p>
+  <input type="date" id="dateInput" />
+  <br />
+  <button onclick="login()">Masuk</button>
+  <p id="error" style="color: #a94442;"></p>
+</div>
+
+<div class="container hidden" id="slidesContainer">
+
+  <div id="slide1" class="slide">
+    <h2>Selamat Anniversary 1 Tahun Ya Sayangku!</h2>
+    <img src="1739109581000.jpg" alt="Couple" class="main-img" />
+    <p>1 Tahun Bersama,Penuh kebahagiaan dan Cerita Indah.</p>
+    <button onclick="nextSlide(1)">Lanjut</button>
+  </div>
+
+  <div id="slide2" class="slide hidden">
+    <h2>Untuk Nanda & Nida</h2>
+    <div class="photos-row">
+      <img src="IMG_1.jpg" alt="Heart 1" />
+      <img src="IMG_12.jpg" alt="Flowers 2" />
+      <img src="IMG_14.jpg" alt="Candle 3" />
+      <img src="IMG_11.jpg" alt="Gift 4" />
+    </div>
+    <p>Semoga cinta kita berdua terus tumbuh dan menguat setiap hari nya ya sayang.</p>
+    <button onclick="prevSlide(2)">Kembali</button>
+    <button onclick="nextSlide(2)">Lanjut</button>
+  </div>
+
+  <div id="slide3" class="slide hidden">
+    <h2>Tanggal Spesial Kita</h2>
+    <div class="photos-row">
+      <img src="1728756331148.jpg" alt="Flower 1" />
+      <img src="1728755860442.jpg" alt="Sky 2" />
+      <img src="1728755513711.jpg" alt="Ocean 3" />
+      <img src="IMG_20241012_163230.jpg" alt="Stars 4" />
+    </div>
+    <p id="annivDateText"></p>
+    <button onclick="prevSlide(3)">Kembali</button>
+    <button onclick="nextSlide(3)">Lanjut</button>
+  </div>
+
+  <div id="slide4" class="slide hidden">
+    <h2>Kenangan Manis Kita</h2>
+    <div class="photos-row">
+      <img src="IMG-20240920-WA0443.jpg" alt="Memories 1" />
+      <img src="IMG-20240920-WA0452.jpg" alt="Couple 2" />
+      <img src="IMG-20240920-WA0450.jpg" alt="Sunset 3" />
+      <img src="IMG-20240920-WA0436.jpg" alt="Candlelight 4" />
+    </div>
+    <p>
+      Setiap detik bersama, setiap tawa dan pelukan,  
+      adalah kenangan yang tak ternilai.  
+      Dari momen sederhana hingga petualangan luar biasa,  
+      cinta kita tumbuh kuat dan indah.
+      Tidak terasa hubungan kita sudah genap 1 tahun
+      yang penuh dengan lika liku,senang dan sedih
+      sudah kita rasakan bersama,semoga ke depan nya
+      kita selalu di beri kesabaran dan kekuatan ya sayang      
+      Terima kasih sudah jadi bagian hidupku,  
+      dan semoga perjalanan kita terus berlanjut dengan cinta dan harapan.
+    </p>
+    <button onclick="prevSlide(4)">Kembali</button>
+    <button onclick="nextSlide(4)">Lanjut</button>
+  </div>
+
+  <div id="slide5" class="slide hidden">
+    <h2>Harapan Kami Untuk Kita Berdua</h2>
+    <div class="photos-row">
+      <img src="1743425721176.jpg" />
+      <img src="IMG-20240920-WA0343.jpg" alt="Party 2" />
+      <img src="IMG-20240920-WA0314.jpg" alt="Cake 3" />
+      <img src="IMG_20250205_115938_726.webp" alt="Gift 4" />
+    </div>
+    <p>Semoga kita selalu bersama sama sampai selama nya.</p>
+    <button onclick="prevSlide(5)">Kembali</button>
+    <button onclick="exitSlides()">Keluar</button>
+  </div>
+
+</div>
+
+<script>
+  let isPlaying = false;
+
+  function toggleMusic() {
+    const bgMusic = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+
+    if (isPlaying) {
+      bgMusic.pause();
+      musicBtn.textContent = '🔊 Play Musik';
+    } else {
+      bgMusic.play().catch(err => console.log("Play error:", err));
+      musicBtn.textContent = '⏸️ Pause Musik';
+    }
+    isPlaying = !isPlaying;
+  }
+
+  function login() {
+    const dateInput = document.getElementById('dateInput').value;
+    const error = document.getElementById('error');
+    if (!dateInput) {
+      error.textContent = "4 Juni";
+      return;
+    }
+    const today = new Date().toISOString().split('T')[0];
+    if (dateInput > today) {
+      error.textContent = "4 Juni 2024.";
+      return;
+    }
+    error.textContent = "";
+
+    document.getElementById('loginContainer').classList.add('hidden');
+    document.getElementById('slidesContainer').classList.remove('hidden');
+    document.getElementById('musicControls').classList.remove('hidden');
+
+    const dateObj = new Date(dateInput);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = dateObj.toLocaleDateString('id-ID', options);
+    document.getElementById('annivDateText').textContent = `Tanggal spesial kalian: ${formattedDate}`;
+  }
+
+  function nextSlide(current) {
+    document.getElementById('slide' + current).classList.add('hidden');
+    const next = current + 1;
+    const nextSlide = document.getElementById('slide' + next);
+    if (nextSlide) {
+      nextSlide.classList.remove('hidden');
+    }
+  }
+
+  function prevSlide(current) {
+    document.getElementById('slide' + current).classList.add('hidden');
+    const prev = current - 1;
+    const prevSlide = document.getElementById('slide' + prev);
+    if (prevSlide) {
+      prevSlide.classList.remove('hidden');
+    }
+  }
+
+  function exitSlides() {
+    document.querySelectorAll('.slide').forEach(s => s.classList.add('hidden'));
+    document.getElementById('slidesContainer').classList.add('hidden');
+    document.getElementById('loginContainer').classList.remove('hidden');
+    document.getElementById('musicControls').classList.add('hidden');
+    document.getElementById('dateInput').value = '';
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+    document.getElementById('musicBtn').textContent = '🔊 Play Musik';
+    isPlaying = false;
+  }
+</script>
+
+</body>
+</html>
